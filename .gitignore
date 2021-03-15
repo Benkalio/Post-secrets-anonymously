@@ -1,2 +1,9 @@
+#Ignore
 .DS_Store
 .vscode/
+
+#dotenv environment file
+.env
+
+#Node modules
+node_modules

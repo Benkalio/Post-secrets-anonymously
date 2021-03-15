@@ -1,4 +1,6 @@
 //jshint esversion:6
+// INITIALIZING THE .ENV VARIABLE
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -27,8 +29,7 @@ const userSchema = new Schema ({
 
 //ENCRYPTION SECTION ***
 //APPLYING THE MONGOOSE-ENCRYPTION TO ENCRYPT/## THE PASSWORD FIELD
-const secret = 'Aunthenticationmodule.';
-userSchema.plugin(encrypt, {secret: secret, encryptFields: ['passwords']});
+userSchema.plugin(encrypt, {secret: process.env.SECRET, encryptFields: ['passwords']});
 
 // CREATING THE MODEL OF THE DATABASE
 const User = new mongoose.model('User', userSchema);
@@ -79,6 +80,6 @@ app.post('/login', (req, res) => {
   });
 });
 
-app.listen(3000, function(){
-  console.log("Booting on port 3000");
+app.listen(2000, function(){
+  console.log("Booting on port 2000");
 });
